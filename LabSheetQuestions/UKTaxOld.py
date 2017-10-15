@@ -23,17 +23,18 @@ def incomeTax(yearlySalary):
 	yearlySalary -= personalAllowance(yearlySalary)	#Since we are taxed after personal allowance is given
 	taxBill = 0
 	#Checks salary(after personal allowance) and takes percentage away in correlation to the yearly salary.
-	if yearlySalary <= 32000:
-		taxBill = (yearlySalary/100 * 20)	#taking 20% tax
-	elif yearlySalary < 150000:
-		taxBill = (yearlySalary/100 * 40)	#taking 40% tax on anything below 150,000 and above 32000
+	#Remember that time I did the question in 20mins but spent hrs on it because I didn't use the right copy :)
+	if yearlySalary >= 150000:
+		taxBill = 32000*0.2 + 118000* 0.4 + (yearlySalary-150000)*0.45
+	elif yearlySalary > 32000:
+		taxBill = (yearlySalary * 0.2) + ((yearlySalary - 32000)* 0.4)
 	else:
-		taxBill = (yearlySalary/100 * 45)	#anything £150000 or above gets a 45% tax
+		taxBill = yearlySalary * 0.2
+		yearlySalary -= yearlySalary * 0.2
 
 	if taxBill < 0:
 		taxBill = 0
 
-	#taxBill = int(taxBill)
-	print(str(taxBill))	#testing output
+	#print(str(taxBill))	#testing output
 
 	return(taxBill)
