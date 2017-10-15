@@ -34,6 +34,22 @@ def incomeTax(yearlySalary):
 	if taxBill < 0:
 		taxBill = 0
 
-	print(str(taxBill))	#testing output
+	#print(str(taxBill))	#testing output
 
 	return(taxBill)
+
+def nationalInsurance(weeklySalary):
+	nhsContribution = 0
+
+	if weeklySalary >= 866:
+		nhsContribution = (866-157)*0.12 + (weeklySalary-866)*0.02#since first 157 is 0%
+	elif weeklySalary > 157:
+		nhsContribution = (weeklySalary-157)*0.12
+	
+	if nhsContribution < 0:
+		nhsContribution = 0
+	nhsContribution = round(nhsContribution, 0)
+
+	#print("\nMe: "+str(nhsContribution))	#test
+	
+	return(nhsContribution)
