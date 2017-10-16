@@ -2,7 +2,7 @@
 #All inputs and outputs must be integers - functions need same name.
 #Include Docstrings as well as comments.
 
-def personalAllowance(yearlySalary):	#Q1
+def personalAllowance(yearlySalary):
 	pAllowance = 11500
 	pAllowanceMinus = 0	#money we take away from the personal allowance
 
@@ -19,7 +19,7 @@ def personalAllowance(yearlySalary):	#Q1
 
 	return(pAllowance)
 
-def incomeTax(yearlySalary):	#Q2
+def incomeTax(yearlySalary):
 	yearlySalary -= personalAllowance(yearlySalary)	#Since we are taxed after personal allowance is given
 	taxBill = 0
 	#Checks salary(after personal allowance) and takes percentage away in correlation to the yearly salary.
@@ -38,7 +38,7 @@ def incomeTax(yearlySalary):	#Q2
 
 	return(taxBill)
 
-def nationalInsurance(weeklySalary):	#Q3
+def nationalInsurance(weeklySalary):
 	nhsContribution = 0
 
 	if weeklySalary >= 866:
@@ -54,7 +54,7 @@ def nationalInsurance(weeklySalary):	#Q3
 	
 	return(nhsContribution)
 
-def monthlyPay(yearlySalary):	#Q4
+def monthlyPay(yearlySalary):
 	weeklySalary = yearlySalary/52	#before tax
 	weeklySalaryTaxed = (yearlySalary-incomeTax(yearlySalary))/52	#weekly salary after income tax
 	weeklySalaryTaxed = nationalInsurance(weeklySalary)	#after nhs tax
@@ -63,30 +63,6 @@ def monthlyPay(yearlySalary):	#Q4
 	monthlyPayTaxed = weeklySalaryTaxed*4.33
 
 	deductions = monthlyPay-monthlyPayTaxed	#Re-read over what deductions is, think this is right though?
-
 	print("Monthly Pay: "+str(monthlyPayTaxed)+"	Monthly Deductions: "+str(deductions))
-	
 	return(monthlyPayTaxed, deductions)
 
-def studentLoan(yearlySalary): #Q5p1
-	studentLoanPay = 0
-
-	if yearlySalary > 21000
-		studentLoanPay = monthlyPay(yearlySalary)*0.09	#turning yearly salary into monthly 
-															#salary that's been taxed then taking 9% of that 
-
-	return(studentLoanPay)
-
-def monthlyPayExt(weeklySalary, student):	#Q5p2
-	nhsContribution = 0
-	if student:
-		if weeklySalary >= 866:
-			nhsContribution = (866-157)*0.12 + (weeklySalary-866)*0.02#since first 157 is 0%
-		elif weeklySalary > 157:
-			nhsContribution = (weeklySalary-157)*0.12
-		
-		if nhsContribution < 0:
-			nhsContribution = 0
-		nhsContribution = round(nhsContribution, 0)
-				
-	return(nhsContribution)
