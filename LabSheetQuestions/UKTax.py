@@ -3,6 +3,7 @@
 #Include Docstrings as well as comments.
 
 def personalAllowance(yearlySalary):	#Q1
+	"""Input Integer - Outputs Ingeger -- GETS YEARLY SALARY MINUS THE PERSONAL ALLOWANCE"""
 	pAllowance = 11500
 	pAllowanceMinus = 0	#money we take away from the personal allowance
 
@@ -20,6 +21,7 @@ def personalAllowance(yearlySalary):	#Q1
 	return(pAllowance)
 
 def incomeTax(yearlySalary):	#Q2
+	"""Input Integer - Outputs Ingeger -- GETS THE TAX BILL FOR YEARLY SALARY"""
 	yearlySalary -= personalAllowance(yearlySalary)	#Since we are taxed after personal allowance is given
 	taxBill = 0
 	#Checks salary(after personal allowance) and takes percentage away in correlation to the yearly salary.
@@ -39,6 +41,7 @@ def incomeTax(yearlySalary):	#Q2
 	return(taxBill)
 
 def nationalInsurance(weeklySalary):	#Q3
+	"""Input Integer - Outputs Ingeger -- TAKES THE NATIONAL INSURANCE RATE FROM WEEKLY SALARY"""
 	nhsContribution = 0
 
 	if weeklySalary >= 866:
@@ -55,6 +58,7 @@ def nationalInsurance(weeklySalary):	#Q3
 	return(nhsContribution)
 
 def monthlyPay(yearlySalary):	#Q4
+	"""Input Iteger - Outputs 2 Integers, monthly pay after tax AND deductions"""
 	weeklySalary = yearlySalary/52	#before tax
 	weeklySalaryTaxed = (yearlySalary-incomeTax(yearlySalary))/52	#weekly salary after income tax
 	weeklySalaryTaxed = nationalInsurance(weeklySalary)	#after nhs tax
@@ -71,13 +75,14 @@ def monthlyPay(yearlySalary):	#Q4
 def studentLoan(yearlySalary): #Q5p1
 	studentLoanPay = 0
 
-	if yearlySalary > 21000
+	if yearlySalary > 21000:
 		studentLoanPay = monthlyPay(yearlySalary)*0.09	#turning yearly salary into monthly 
 															#salary that's been taxed then taking 9% of that 
 
 	return(studentLoanPay)
 
 def monthlyPayExt(weeklySalary, student):	#Q5p2
+	"""2 inputs, (integer, boolean) - Outputs 1 ineger -- Gets users NHS contribution - (Weekly Salary, student?)
 	nhsContribution = 0
 	if student:
 		if weeklySalary >= 866:
