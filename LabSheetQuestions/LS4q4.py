@@ -3,8 +3,8 @@
 #occurrences next to it. You will need a loop (you choose which).
 
 def wordFrequency():
-	listSplit = input("Enter a sentence: ").split()
-	listSplit.sort()
+	listSplit = input("Enter a sentence: ").split()	#splits the string between spaces
+	listSplit.sort()	#origanises the list alphabetically
 
 	#print(str(listSplit))		#test
 	
@@ -24,7 +24,7 @@ def wordFrequency():
 
 		if listSplit[listPosI] != "_No_Duplicate_":	#if it's not a duplicate then it will print (so it prints once)
 			print(str(i+" : "+str(count)))
-		
+
 		count = 0
 		listPosX = 0
 		listPosI += 1
