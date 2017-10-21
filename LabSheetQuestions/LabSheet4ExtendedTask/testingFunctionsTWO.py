@@ -22,47 +22,19 @@ dateCount = 0
 for i in randList:
 	for j in i:
 		if countX == 0:
-			date = j[0:4]+j[5:7]+j[8:10]
-			date = int(date)
-			#print(str(date))
+			date = j[8:10]+"/"+j[5:7]+"/"+j[0:4]
 			years.append(date)
 		elif countX == 1:
-			price.append(j)
-		
+			price.append(j)	
 		countX +=1
-		#print(str(j)+"\t", end="")
-	
 	countX = 0
-	#print("\n")
 
-date_fmt = '%Y%m%d'
-dt_x = [dt.datetime.strptime(str(i), date_fmt) for i in years]
-x = [dates.date2num(i) for i in dt_x]
 
-fig, ax = plt.subplots()
+x = [dt.datetime.strptime(d,'%d/%m/%Y').date() for d in years]
+y = range(len(x))
 
-# Use plot_date rather than plot when dealing with time data.
-ax.plot_date(years, price, 'bo-')
-
-date_formatter = dates.DateFormatter('%Y%m%d')
-
-ax.xaxis.set_major_formatter(date_formatter)
-
-fig.autofmt_xdate()
-
+plt.gca().xaxis.set_major_formatter(dates.DateFormatter('%d/%m/%Y'))
+plt.gca().xaxis.set_major_locator(dates.DayLocator())
+plt.plot(x,y)
+plt.gcf().autofmt_xdate()
 plt.show()
-
-#print("Year:\n"+str(years)+"\n\n\n")
-#yearsPlot = range(2006, 2018)
-#pricePlot = range(100, 500)
-#plt.plot_date(years, price, fmt="o", xdate=True, ydate=False)
-
-#plt.plot(years, price, 'ro')
-
-#plt.gca().xaxis.set_major_formatter(dates.DateFormatter("%Y%m%d"))
-#plt.gca().xaxis.set_major_locator(dates.DayLocator())
-#plt.gfc().autofmt_xdate()
-
-#plt.ylabel("Testing")
-#plt.show()
-
