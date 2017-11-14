@@ -24,5 +24,6 @@ def kochSnowflake(x, m):
 
 ttl.fillcolor("red")
 ttl.speed(0)
-kochSnowflake(100, 200)
+ttl.delay(0)
+kochSnowflake(3, 2)
 ttl.exitonclick()
